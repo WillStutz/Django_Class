@@ -1,0 +1,25 @@
+{% extends "Main_app/base.html" %}
+
+{% block content %}
+
+<p>Topic: {{ topic }}</p>
+
+<ul>
+
+    {% for e in entries %}
+    <li>{{ e.text }}</li>
+    --{{ e.data_added }}
+    <p>
+        <a href="{% url 'Main_app:edit_entry' e.id %}">edit entry</a>
+    </p>
+    {% empty %}
+    <li>No entries for this topic have been added yet</li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href="{% url 'Main_app:new_entry' topic.id %}">Addd a new entry</a>
+</p>
+
+
+{% endblock content %}

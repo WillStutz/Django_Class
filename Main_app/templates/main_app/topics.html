@@ -1,0 +1,23 @@
+{% extends "Main_app/base.html" %}
+
+{% block content %}
+
+<p>Topics</p>
+
+<ul>
+
+    {% for topic in t %}
+    <li>
+        <a href="{% url 'Main_app:topic' topic.id %}"> {{topic.text}}</a>
+        </li>
+
+    {% empty %}
+    <li>No topic has been added yet</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'Main_app:new_topic' %}">Add a new topic</a>
+
+
+
+{% endblock content %}
